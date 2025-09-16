@@ -1,14 +1,12 @@
-import json
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-import torch
-from torch.utils.data import Dataset, DataLoader
-import torch.nn as nn
-import torch.optim as optim
-import pytorch_lightning as pl
-from torchmetrics.classification import Accuracy
+def unzip_data(zip_path, extract_dir):
+    # Create the folder if it doesn't exist
+    os.makedirs(extract_dir, exist_ok=True)
+
+    # Unzip
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall(extract_dir)
+
+
 
 class MNISTData(Dataset):
     def __init__(self, X, y):
@@ -95,3 +93,35 @@ def fit_model(model, train_loader, val_loader):
     )
 
     trainer.fit(model, train_loader, val_loader)
+
+def load_test_data(path):
+    test_data = pd.read_csv(path)  # [9999, 785]
+
+    X_test = test_data.iloc[:, 1:].values.astype("float32") / 255.0
+    y_test = test_data.iloc[:, 0].values.astype("int64")
+
+    test_dataset = MNISTData(X_test, y_test)
+    return test_dataset
+
+def plot_gradients(input, vanilla_gradient, grad_x_input):
+    plt.figure(figsize=(12, 4))  # wider to fit 3 images
+
+    # Original image
+    plt.subplot(1, 3, 1)
+    plt.imshow(input.cpu().detach().numpy().squeeze(), cmap='gray')
+    plt.title(f"Original image")
+    plt.axis('off')
+
+    # Gradient importance
+    plt.subplot(1, 3, 2)
+    plt.imshow(np.abs(vanilla_gradient), cmap='hot')
+    plt.title("Vanilla Gradients")
+    plt.axis('off')
+
+    #  Gradient × Input importance
+    plt.subplot(1, 3, 3)
+    plt.imshow(np.abs(grad_x_input), cmap='hot')
+    plt.title("Gradient × Input")
+    plt.axis('off')
+
+    plt.show()
