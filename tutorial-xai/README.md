@@ -17,15 +17,15 @@ This is a tutorial of the [AISEC Summer School](https://aisec-summerschool.cysec
 
 
 #### Part I: 
-Tutorial: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
+Tutorial: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AISEC-Summerschool/tutorials2025/blob/main/tutorial-xai/notebooks/1_gradients-101.ipynb)
 
-Solution: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
+Solution: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AISEC-Summerschool/tutorials2025/blob/main/tutorial-xai/notebooks/1_gradients-101_solution.ipynb)
 
 
 #### Part II: 
-Tutorial: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
+Tutorial: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AISEC-Summerschool/tutorials2025/blob/main/tutorial-xai/notebooks/2_gradients-xai.ipynb)
 
-Solution: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
+Solution: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AISEC-Summerschool/tutorials2025/blob/main/tutorial-xai/notebooks/2_gradients-xai_solution.ipynb)
 
 
 #### Part III: 
