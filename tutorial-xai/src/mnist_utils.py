@@ -1,3 +1,17 @@
+import json
+import pandas as pd
+import numpy as np
+import zipfile
+import os
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+import torch
+from torch.utils.data import Dataset, DataLoader
+import torch.nn as nn
+import torch.optim as optim
+import pytorch_lightning as pl
+from torchmetrics.classification import Accuracy
+
 def unzip_data(zip_path, extract_dir):
     # Create the folder if it doesn't exist
     os.makedirs(extract_dir, exist_ok=True)
@@ -5,8 +19,6 @@ def unzip_data(zip_path, extract_dir):
     # Unzip
     with zipfile.ZipFile(zip_path, 'r') as zip_ref:
         zip_ref.extractall(extract_dir)
-
-
 
 class MNISTData(Dataset):
     def __init__(self, X, y):
