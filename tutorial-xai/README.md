@@ -15,10 +15,6 @@ This is a tutorial of the [AISEC Summer School](https://aisec-summerschool.cysec
 
 ### Notebooks
 
-#### ALL (test)
-
-Tutorial: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AISEC-Summerschool/tutorials2025/blob/main/tutorial-xai/notebooks/drebin_xai.ipynb)
-
 #### Part I: 
 Tutorial: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AISEC-Summerschool/tutorials2025/blob/main/tutorial-xai/notebooks/1_gradients-101.ipynb)
 
