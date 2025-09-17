@@ -36,11 +36,11 @@ class DeepDrebinMLP(pl.LightningModule):
         return self.net(x).squeeze(1)
 
 
-def build_model(path, DEVICE):
+def build_model(path, DEVICE="cpu"):
     bundle = torch.load(path, map_location=DEVICE, weights_only=False)
 
     state_dict = bundle["model_state_dict"]
-    model_hparams = bundle["model_hparams"]  # <-- input_dim, hidden, dropout
+    model_hparams = bundle["model_hparams"]
     selector = bundle["selector"]
     selected_names = bundle["selected_names"]
     threshold = bundle.get("threshold", 0.5)
@@ -72,12 +72,10 @@ def load_libsvm(LIBSVM_DATA, selector, model_hparams):
         if uniq == {-1.0, 1.0}:
             y = ((y + 1.0) / 2.0).astype(np.float32)
 
-    print(f"Raw: {X_sp.shape[0]} samples × {X_sp.shape[1]} features (sparse)")
-
     # Apply same selector the model was trained with
-    X_sel = selector.transform(X_sp)  # still sparse
-    X = X_sel.toarray().astype(np.float32)  # model expects dense
-    print(f"After selection: {X.shape[0]} × {X.shape[1]} (dense)")
+    X_sel = selector.transform(X_sp)  
+    X = X_sel.toarray().astype(np.float32)
+    print(f"Data dimension: {X.shape[0]} × {X.shape[1]} (dense)")
     assert X.shape[1] == model_hparams["input_dim"], "Selected feature count must match model input_dim."
     return X, y
 
